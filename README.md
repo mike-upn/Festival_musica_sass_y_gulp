@@ -151,3 +151,7 @@ done();
 exports.dev = dev;
 
 // agegar el dev a los scripts de package.json
+
+# usar plumber
+
+npm i -D glup-plumber
