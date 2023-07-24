@@ -35,7 +35,7 @@ scss
 ahi crear un archivo con la extencion.scss
 ejemplo: app.scss
 
-# compilar sass (si compilar sas se compila)
+# compilar sass
 
 en el archivo:
 package.json
@@ -70,3 +70,84 @@ como al compilar el scss le decimos que
 guarde el compilado en :
 build/css
 en el html tenemos que referenciar a esa carpeta
+
+# instalar y usar gulp
+
+npm i -D gulp//forma corta
+npm install --save-dev gulp//forma larga
+// se agregara la dependencia al
+package.json
+
+# crear un gulpfile
+
+crear un archivo llamado
+gulpfile.json
+
+# usar y ejecutar gulp
+
+gulp sirve para automatizar tareas
+usando js
+cada funcion sera una tarea ejem:
+
+function tarea(done) {
+console.log("EjecutandoTarea...");
+done();
+}
+exports.tarea = tarea;
+//-------^--- nombre para ejecutarla en la CLI
+
+// podemos mandara llamar esa tarea con la CLI
+npx gulp tarea
+
+// tambien podemos llamar a esa tarea con el package.json
+"scripts":{
+"tarea": "gulp tarea"
+//-^--------^-----^----
+//nombre --binario--nombre del exports en el el gulpfile(exports.tarea)
+}
+en la CLI
+npm run tarea
+
+# compilar SASS pero automaizado con gulp
+
+//instalar puggin gulp-sass
+npm i --save-dev gulp-sass
+importar el api de gulp al inicio del archivo
+const { src, dest,watch } = require("gulp");
+const sass = require("gulp-sass")(require("sass"));
+
+// tareas del proyecto
+function css(done) {
+src("src/scss/app.scss") // identificar el archivo de sass
+.pipe(sass()) //Compilarla
+.pipe(dest("build/css")); // almacenarla en el disco
+done();
+}
+exports.css = css;
+
+//creamos una funcion
+function dev(done) {
+watch("src/scss/app.scss", css);
+//--------^-----------------^------
+// ruta--------------------funcion css que acabamos de crear
+done();
+}
+exports.dev = dev;
+
+// agregas el dev al script del pacage.json
+como explica en #usar y ejecutar gulp
+
+# agregar el watch a la automatizacion de la compilacion de gulp
+
+const { src, dest,watch } = require("gulp");
+-------------------^----- agregamos watch
+creamos una funcion
+function dev(done) {
+watch("src/scss/app.scss", css);
+//--------^-----------------^------
+// ruta--------------------funcion css definida para automaizar la compilacion del css
+done();
+}
+exports.dev = dev;
+
+// agegar el dev a los scripts de package.json
