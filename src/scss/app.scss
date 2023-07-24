@@ -1,4 +1,6 @@
-$rojo:blue;
-body{
-    background-color: $rojo;
-}
+// //sintaxis anterior 
+// @import 'base/variables';
+// @import 'contenido/contenido';
+
+//sintaxis nueva
+@use 'base';
