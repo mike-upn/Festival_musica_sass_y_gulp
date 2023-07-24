@@ -155,3 +155,7 @@ exports.dev = dev;
 # usar plumber
 
 npm i -D glup-plumber
+
+# generar gradientes
+
+https://cssgradient.io/
