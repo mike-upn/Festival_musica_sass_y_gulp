@@ -159,3 +159,16 @@ npm i -D glup-plumber
 # generar gradientes
 
 https://cssgradient.io/
+
+# para converti imagenes a webp
+
+npm i -D gulp-webp
+
+# para hacer ligeras las imagnes jpg
+
+npm i -D gulp-imagemin@7.1.0
+npm i -D gulp-cache
+
+# para convertir a avif
+
+npm i -D gulp-avif
